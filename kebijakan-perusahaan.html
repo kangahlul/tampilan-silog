@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kebijakan Perusahaan - SILOG</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bright-white: #FFFFFF;
+            --total-black: #000000;
+            --light-grey: #DFDEDE;
+            --dark-grey: #5E5E5F;
+            --red-accent: #F5333F;
+            --merah-sig: #F5333F;
+            --hijau-alam: #92C83E;
+            --emas: #BFA01B;
+            --perak: #AFAFAF;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--total-black);
+            background: var(--bright-white);
+            overflow-x: hidden;
+        }
+
+        @font-face {
+            font-family: 'SIG Headline';
+            src: url('font/SIGHeadline-Bold.ttf') format('truetype');
+            font-weight: 700;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'SIG Headline';
+            src: url('font/SIGHeadline-ExtraBold.ttf') format('truetype');
+            font-weight: 800;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'SIG Headline';
+            src: url('font/SIGHeadline-Black.ttf') format('truetype');
+            font-weight: 900;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'SIG Text';
+            src: url('font/SIGText-Light.ttf') format('truetype');
+            font-weight: 300;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'SIG Text';
+            src: url('font/SIGText-Regular.ttf') format('truetype');
+            font-weight: 400;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'SIG Text';
+            src: url('font/SIGText-Medium.ttf') format('truetype');
+            font-weight: 500;
+            font-style: normal;
+        }
+
+        /* Custom Fonts */
+        .primary-font {
+            font-family: 'SIG Headline', sans-serif;
+            font-weight: 900;
+        }
+
+        .secondary-font {
+            font-family: 'SIG Text', sans-serif;
+        }
+
+        /* Top Navigation */
+        .top-navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: linear-gradient(135deg, var(--total-black) 0%, #1a1a1a 100%);
+            z-index: 1001;
+            padding: 0.5rem 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-bottom: 2px solid var(--red-accent);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .top-nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 0 2rem;
+        }
+
+        .top-nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .top-nav-link {
+            text-decoration: none;
+            color: var(--bright-white);
+            font-family: 'SIG Text', sans-serif;
+            font-weight: 500;
+            font-size: 0.7rem;
+            transition: all 0.3s ease;
+            padding: 0.3rem 0.5rem;
+            position: relative;
+            border-radius: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.2px;
+        }
+
+        .top-nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--red-accent);
+            border-radius: 20px;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+            z-index: -1;
+        }
+
+        .top-nav-link:hover {
+            color: var(--bright-white);
+            transform: translateY(-2px);
+        }
+
+        .top-nav-link:hover::before {
+            transform: scaleX(1);
+        }
+
+        /* Main Navigation */
+        .navbar {
+            position: fixed;
+            top: 32px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-bottom: 3px solid var(--red-accent);
+            box-shadow: 0 8px 32px rgba(245, 51, 63, 0.1);
+        }
+
+        .navbar.scrolled {
+            top: 0;
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 8px 32px rgba(245, 51, 63, 0.15);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            height: 40px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 1.2rem;
+            align-items: center;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--total-black);
+            font-family: 'SIG Text', sans-serif;
+            font-weight: 600;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+            padding: 0.5rem 0.8rem;
+            position: relative;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.2px;
+        }
+
+        .nav-link:hover {
+            color: var(--bright-white);
+            background: var(--red-accent);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(245, 51, 63, 0.3);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: var(--red-accent);
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 80%;
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--bright-white);
+            min-width: 250px;
+            box-shadow: 0 15px 40px rgba(245, 51, 63, 0.15);
+            border-radius: 15px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-15px) scale(0.95);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid var(--red-accent);
+            overflow: hidden;
+        }
+
+        .nav-item:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0) scale(1);
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 1rem 1.5rem;
+            color: var(--total-black);
+            text-decoration: none;
+            font-family: 'SIG Text', sans-serif;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(223, 222, 222, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dropdown a:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--red-accent), #ff6b6b);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .dropdown a:hover {
+            color: var(--bright-white);
+            transform: translateX(8px);
+        }
+
+        .dropdown a:hover::before {
+            left: 0;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--total-black);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 60vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(245, 51, 63, 0.05), rgba(0, 0, 0, 0.02));
+            padding: 0;
+            margin-top: 88px;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+            color: var(--dark-grey);
+        }
+
+        .breadcrumb a {
+            color: var(--dark-grey);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--merah-sig);
+        }
+
+        .breadcrumb i {
+            margin: 0 0.5rem;
+            font-size: 0.8rem;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            color: var(--total-black);
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--dark-grey);
+            font-weight: 400;
+            line-height: 1.6;
+        }
+
+        /* Introduction Section */
+        .intro-section {
+            padding: 6rem 2rem;
+            background: var(--bright-white);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .intro-content {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .intro-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 2rem;
+            background: linear-gradient(135deg, var(--merah-sig), var(--emas));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(245, 51, 63, 0.4); }
+            50% { transform: scale(1.05); box-shadow: 0 0 0 20px rgba(245, 51, 63, 0); }
+        }
+
+        .intro-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--dark-grey);
+            margin-bottom: 2rem;
+        }
+
+        .intro-text strong {
+            color: var(--total-black);
+            font-weight: 600;
+        }
+
+        /* Policy Cards Section */
+        .policy-section {
+            padding: 6rem 2rem;
+            background: var(--light-grey);
+        }
+
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--total-black);
+        }
+
+        .policy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .policy-card {
+            background: var(--bright-white);
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: cardSlideUp 0.8s ease forwards;
+        }
+
+        .policy-card:nth-child(1) { animation-delay: 0.1s; }
+        .policy-card:nth-child(2) { animation-delay: 0.2s; }
+        .policy-card:nth-child(3) { animation-delay: 0.3s; }
+        .policy-card:nth-child(4) { animation-delay: 0.4s; }
+        .policy-card:nth-child(5) { animation-delay: 0.5s; }
+        .policy-card:nth-child(6) { animation-delay: 0.6s; }
+        .policy-card:nth-child(7) { animation-delay: 0.7s; }
+        .policy-card:nth-child(8) { animation-delay: 0.8s; }
+        .policy-card:nth-child(9) { animation-delay: 0.9s; }
+
+        @keyframes cardSlideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .policy-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--merah-sig), var(--emas));
+            transition: left 0.6s ease;
+        }
+
+        .policy-card:hover::before {
+            left: 0;
+        }
+
+        .policy-card:hover {
+            transform: translateY(-8px) rotateX(5deg);
+            box-shadow: 0 20px 50px rgba(245, 51, 63, 0.2);
+        }
+
+        .policy-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--merah-sig), var(--emas));
+            color: var(--bright-white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .policy-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--total-black);
+        }
+
+        .policy-text {
+            color: var(--dark-grey);
+            line-height: 1.6;
+        }
+
+        .policy-text strong {
+            color: var(--total-black);
+        }
+
+        /* ISO Certifications Section */
+        .iso-section {
+            padding: 6rem 2rem;
+            background: var(--dark-grey);
+            color: var(--bright-white);
+        }
+
+        .iso-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .iso-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            opacity: 0.8;
+            margin-bottom: 4rem;
+        }
+
+        .iso-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .iso-badge {
+            background: var(--bright-white);
+            color: var(--total-black);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .iso-badge::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--perak), var(--emas));
+        }
+
+        .iso-badge:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .iso-code {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--merah-sig);
+            margin-bottom: 0.5rem;
+        }
+
+        .iso-name {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--total-black);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--total-black);
+            color: var(--bright-white);
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        .footer-logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--merah-sig), var(--emas));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+            }
+
+            .footer-brand {
+                grid-column: 1 / -1;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+
+            .top-nav-menu {
+                display: none;
+            }
+
+            .top-navbar {
+                display: none;
+            }
+
+            .hero {
+                margin-top: 80px;
+            }
+
+            .navbar {
+                top: 0;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .policy-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .policy-card {
+                padding: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .intro-section,
+            .policy-section,
+            .iso-section {
+                padding: 4rem 1rem;
+            }
+
+            .nav-container {
+                padding: 0 1rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* Scroll Animation */
+        .scroll-fade {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .scroll-fade.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--total-black);
+            color: var(--bright-white);
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr 1.5fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-logo {
+            height: 60px;
+            margin-bottom: 1.5rem;
+            filter: brightness(0) invert(1);
+        }
+
+        .footer-description {
+            color: var(--light-grey);
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            background: var(--dark-grey);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--bright-white);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .social-link:hover {
+            background: var(--merah-sig);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(245, 51, 63, 0.4);
+        }
+
+        .footer-section h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--bright-white);
+            position: relative;
+        }
+
+        .footer-section h4::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background: var(--merah-sig);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--light-grey);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--merah-sig);
+            padding-left: 10px;
+        }
+
+        .footer-links a::before {
+            content: '';
+            width: 4px;
+            height: 4px;
+            background: var(--merah-sig);
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-links a:hover::before {
+            opacity: 1;
+        }
+
+        .contact-info {
+            list-style: none;
+        }
+
+        .contact-info li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: var(--light-grey);
+            font-size: 0.95rem;
+        }
+
+        .contact-info i {
+            color: var(--merah-sig);
+            font-size: 1.1rem;
+            width: 20px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--dark-grey);
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-copyright {
+            color: var(--light-grey);
+            font-size: 0.9rem;
+        }
+
+        .footer-links-bottom {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-links-bottom a {
+            color: var(--light-grey);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links-bottom a:hover {
+            color: var(--merah-sig);
+        }
+
+        @media (max-width: 968px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+            }
+
+            .footer-brand {
+                grid-column: 1 / -1;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Navigation -->
+    <nav class="top-navbar" id="topNavbar">
+        <div class="top-nav-container">
+            <ul class="top-nav-menu">
+                <li><a href="#" class="top-nav-link"><i class="fas fa-shopping-cart"></i> Pengadaan</a></li>
+                <li><a href="karir.html" class="top-nav-link"><i class="fas fa-users"></i> Karir</a></li>
+                <li><a href="jaringan.html" class="top-nav-link"><i class="fas fa-network-wired"></i> Jaringan</a></li>
+                <li><a href="kontak.html" class="top-nav-link"><i class="fas fa-phone"></i> Kontak</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html"><img src="logo.png" alt="SILOG Logo" class="logo"></a>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Beranda</a>
+                </li>
+                <li class="nav-item">
+                    <a href="tentang.html" class="nav-link">Tentang <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown">
+                        <a href="sejarah-profil.html">Profil</a>
+                        <a href="visi-misi.html">Visi & Misi</a>
+                        <a href="kebijakan-perusahaan.html">Kebijakan Perusahaan</a>
+                        <a href="tata-kelola.html">Tata Kelola Perusahaan</a>
+                        <a href="sdm.html">Sumber Daya Manusia</a>
+                        <a href="direksi-komisaris.html">Direksi & Komisaris</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="bisnis.html" class="nav-link">Produk dan Layanan <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown">
+                        <a href="logistik.html">Logistik</a>
+                        <a href="konstruksi.html">Konstruksi</a>
+                        <a href="distribusi.html">Distribusi</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="info.html" class="nav-link">Media & Publikasi <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown">
+                        <a href="info.html#news">Berita</a>
+                        <a href="info.html#gallery">Galeri</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="grub.html" class="nav-link">Grup</a>
+                </li>
+            </ul>
+            <button class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="breadcrumb">
+                    <a href="index.html">Beranda</a>
+                    <i class="fas fa-chevron-right"></i>
+                    <a href="#">Tentang</a>
+                    <i class="fas fa-chevron-right"></i>
+                    <span>Kebijakan Perusahaan</span>
+                </div>
+                <h1 class="hero-title primary-font">Kebijakan Perusahaan</h1>
+                <p class="hero-subtitle secondary-font">
+                    Komitmen SILOG dalam governance dan compliance untuk mewujudkan visi perusahaan yang terpercaya, terkemuka dan terluas di Indonesia
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Introduction Section -->
+    <section class="intro-section scroll-fade">
+        <div class="container">
+            <div class="intro-content">
+                <div class="intro-icon">
+                    <svg width="40" height="40" fill="white" viewBox="0 0 24 24">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                    </svg>
+                </div>
+                <p class="intro-text">
+                    Dalam rangka mewujudkan visi perusahaan untuk menjadi perusahaan jasa logistik, kedistributoran building materials dan jasa konstruksi terpercaya, terkemuka dan terluas di Indonesia yang didukung <strong>supply chain</strong> terintegrasi dan berdaya saing tinggi dengan komitmen sebagai berikut:
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Policy Cards Section -->
+    <section class="policy-section">
+        <div class="container">
+            <h2 class="section-title scroll-fade">Komitmen Kebijakan</h2>
+            <div class="policy-grid">
+                <!-- Policy Card 1 -->
+                <div class="policy-card">
+                    <div class="policy-number">1</div>
+                    <h3 class="policy-title">Menerapkan Sistem Manajemen Semen Indonesia Logistik (SMSILOG)</h3>
+                    <div class="policy-text">
+                        Implementasi sistem manajemen terpadu yang mencakup 6 sistem manajemen ISO untuk menjamin kualitas, keselamatan, dan efisiensi operasional perusahaan.
+                    </div>
+                </div>
+
+                <!-- Policy Card 2 -->
+                <div class="policy-card">
+                    <div class="policy-number">2</div>
+                    <h3 class="policy-title">Kepatuhan Regulasi dan Manajemen Risiko</h3>
+                    <div class="policy-text">
+                        <strong>Mematuhi persyaratan peraturan dan perundang-undangan</strong> yang relevan dengan bisnis perusahaan dan pelaksanaan sistem kontrol terpadu sesuai yang dipersyaratkan dalam manajemen risiko seluruh kegiatan operasional perusahaan.
+                    </div>
+                </div>
+
+                <!-- Policy Card 3 -->
+                <div class="policy-card">
+                    <div class="policy-number">3</div>
+                    <h3 class="policy-title">Orientasi Kepuasan Pelanggan</h3>
+                    <div class="policy-text">
+                        <strong>Memproduksi, pelayanan dan memperdagangkan produk</strong> yang berorientasikan terhadap kepuasan pelanggan dengan menerapkan sistem manajemen terpadu dan teknologi yang efektif dan efisien.
+                    </div>
+                </div>
+
+                <!-- Policy Card 4 -->
+                <div class="policy-card">
+                    <div class="policy-number">4</div>
+                    <h3 class="policy-title">Perbaikan Berkelanjutan K3 dan Lingkungan</h3>
+                    <div class="policy-text">
+                        <strong>Melakukan perbaikan berkelanjutan</strong> terhadap Sistem Manajemen K3, Lingkungan guna meningkatkan Budaya K3 yang baik di tempat kerja.
+                    </div>
+                </div>
+
+                <!-- Policy Card 5 -->
+                <div class="policy-card">
+                    <div class="policy-number">5</div>
+                    <h3 class="policy-title">Pengelolaan Lingkungan dan Logistik Ramah Lingkungan</h3>
+                    <div class="policy-text">
+                        <strong>Mengelola lingkungan untuk mengantisipasi dampak pemanasan global</strong>, termasuk melakukan upaya pengurangan pencemaran udara dan mengembangkan operasional logistik ramah lingkungan.
+                    </div>
+                </div>
+
+                <!-- Policy Card 6 -->
+                <div class="policy-card">
+                    <div class="policy-number">6</div>
+                    <h3 class="policy-title">Etika Bisnis dan Budaya Perusahaan</h3>
+                    <div class="policy-text">
+                        <strong>Menjunjung tinggi etika bisnis</strong> dengan didasari oleh kapasitas kepemimpinan dan budaya perusahaan yang kuat.
+                    </div>
+                </div>
+
+                <!-- Policy Card 7 -->
+                <div class="policy-card">
+                    <div class="policy-number">7</div>
+                    <h3 class="policy-title">Sinergi Grup dan Optimalisasi Sumber Daya</h3>
+                    <div class="policy-text">
+                        <strong>Memperkuat sinergi grup</strong> dalam upaya peningkatan daya saing dengan mengoptimalkan sumber daya dan jaringan bisnis yang dimiliki perusahaan.
+                    </div>
+                </div>
+
+                <!-- Policy Card 8 -->
+                <div class="policy-card">
+                    <div class="policy-number">8</div>
+                    <h3 class="policy-title">Pengembangan SDM Kompeten dan Profesional</h3>
+                    <div class="policy-text">
+                        <strong>Pengembangan kompetensi sumber daya manusia</strong> yang kompeten dan profesional untuk mendukung pelaksanaan seluruh komitmen perusahaan dengan cara peningkatan kompetensi dan inovasi berkelanjutan.
+                    </div>
+                </div>
+
+                <!-- Policy Card 9 -->
+                <div class="policy-card">
+                    <div class="policy-number">9</div>
+                    <h3 class="policy-title">Hubungan Harmonis dengan Stakeholder</h3>
+                    <div class="policy-text">
+                        <strong>Menjalin hubungan yang harmonis</strong> dengan <strong>Stakeholder</strong> dan pihak-pihak yang berkepentingan.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ISO Certifications Section -->
+    <section class="iso-section scroll-fade">
+        <div class="container">
+            <h2 class="iso-title">Sistem Manajemen ISO</h2>
+            <p class="iso-subtitle">6 Sistem Manajemen Terintegrasi dalam SMSILOG</p>
+            <div class="iso-grid">
+                <div class="iso-badge">
+                    <div class="iso-code">ISO 9001:2015</div>
+                    <div class="iso-name">Sistem Manajemen Mutu</div>
+                </div>
+                <div class="iso-badge">
+                    <div class="iso-code">PP 50/2012</div>
+                    <div class="iso-name">Sistem Manajemen K3</div>
+                </div>
+                <div class="iso-badge">
+                    <div class="iso-code">ISO 37001:2016</div>
+                    <div class="iso-name">Sistem Manajemen Anti Penyuapan</div>
+                </div>
+                <div class="iso-badge">
+                    <div class="iso-code">ISO 45001:2018</div>
+                    <div class="iso-name">Sistem Manajemen Keselamatan Kerja</div>
+                </div>
+                <div class="iso-badge">
+                    <div class="iso-code">ISO 14001:2018</div>
+                    <div class="iso-name">Sistem Manajemen Lingkungan</div>
+                </div>
+                <div class="iso-badge">
+                    <div class="iso-code">ISO 31000:2018</div>
+                    <div class="iso-name">Sistem Manajemen Risiko</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="logo.png" alt="SILOG Logo" class="footer-logo">
+                    <p class="footer-description secondary-font">
+                        Solusi terpercaya untuk kebutuhan logistik, konstruksi, dan distribusi di seluruh Indonesia. Berpengalaman lebih dari 6 dekade dalam melayani industri nasional.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4 class="primary-font">Bisnis</h4>
+                    <ul class="footer-links secondary-font">
+                        <li><a href="logistik.html">Logistik</a></li>
+                        <li><a href="konstruksi.html">Konstruksi</a></li>
+                        <li><a href="distribusi.html">Distribusi</a></li>
+                        <li><a href="bisnis.html">Semua Bisnis</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4 class="primary-font">Informasi</h4>
+                    <ul class="footer-links secondary-font">
+                        <li><a href="grub.html">Grup</a></li>
+                        <li><a href="info.html">Berita</a></li>
+                        <li><a href="info.html#gallery">Galeri</a></li>
+                        <li><a href="kontak.html">Kontak</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4 class="primary-font">Jaringan</h4>
+                    <ul class="footer-links secondary-font">
+                        <li><a href="jaringan.html#portfolio">Portofolio</a></li>
+                        <li><a href="jaringan.html#warehouse">Gudang</a></li>
+                        <li><a href="jaringan.html">Semua Jaringan</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4 class="primary-font">Kontak</h4>
+                    <ul class="contact-info secondary-font">
+                        <li><i class="fas fa-phone"></i> +62 21 1234 5678</li>
+                        <li><i class="fas fa-envelope"></i> info@silog.co.id</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Jl. Raya Logistik No. 123<br>Jakarta Selatan 12345</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-copyright secondary-font">
+                    © 2025 SILOG - Semen Indonesia Logistik. All rights reserved.
+                </div>
+                <div class="footer-links-bottom secondary-font">
+                    <a href="#privacy">Privacy Policy</a>
+                    <a href="#terms">Terms of Service</a>
+                    <a href="#sitemap">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            const topNavbar = document.getElementById('topNavbar');
+            
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+                if (topNavbar) {
+                    topNavbar.style.transform = 'translateY(-100%)';
+                }
+            } else {
+                navbar.classList.remove('scrolled');
+                if (topNavbar) {
+                    topNavbar.style.transform = 'translateY(0)';
+                }
+            }
+        });
+
+        // Scroll-based animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-fade').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
