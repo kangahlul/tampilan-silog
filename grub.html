@@ -111,6 +111,7 @@
         .top-nav-link {
             text-decoration: none;
             color: var(--bright-white);
+            font-family: 'SIG Text', sans-serif;
             font-weight: 500;
             font-size: 0.7rem;
             transition: all 0.3s ease;
@@ -128,7 +129,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: var(--red-primary);
+            background: var(--red-accent);
             border-radius: 20px;
             transform: scaleX(0);
             transition: transform 0.3s ease;
@@ -153,14 +154,15 @@
             backdrop-filter: blur(20px);
             z-index: 1000;
             padding: 1rem 0;
-            transition: all 0.3s ease;
-            border-bottom: 1px solid rgba(223, 222, 222, 0.3);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-bottom: 3px solid var(--red-accent);
+            box-shadow: 0 8px 32px rgba(245, 51, 63, 0.1);
         }
 
         .navbar.scrolled {
             top: 0;
             background: rgba(255, 255, 255, 0.98);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 32px rgba(245, 51, 63, 0.15);
         }
 
         .nav-container {
@@ -173,7 +175,7 @@
         }
 
         .logo {
-            height: 50px;
+            height: 40px;
             transition: transform 0.3s ease;
         }
 
@@ -184,7 +186,7 @@
         .nav-menu {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 1.2rem;
             align-items: center;
         }
 
@@ -195,30 +197,39 @@
         .nav-link {
             text-decoration: none;
             color: var(--total-black);
-            font-weight: 500;
-            font-size: 0.95rem;
+            font-family: 'SIG Text', sans-serif;
+            font-weight: 600;
+            font-size: 0.8rem;
             transition: all 0.3s ease;
-            padding: 0.5rem 0;
+            padding: 0.5rem 0.8rem;
             position: relative;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.2px;
         }
 
         .nav-link:hover {
-            color: var(--red-accent);
+            color: var(--bright-white);
+            background: var(--red-accent);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(245, 51, 63, 0.3);
         }
 
         .nav-link::after {
             content: '';
             position: absolute;
-            bottom: 0;
-            left: 0;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
             width: 0;
-            height: 2px;
-            background: var(--red-primary);
+            height: 3px;
+            background: var(--red-accent);
+            border-radius: 2px;
             transition: width 0.3s ease;
         }
 
         .nav-link:hover::after {
-            width: 100%;
+            width: 80%;
         }
 
         .dropdown {
@@ -226,36 +237,60 @@
             top: 100%;
             left: 0;
             background: var(--bright-white);
-            min-width: 200px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
+            min-width: 250px;
+            box-shadow: 0 15px 40px rgba(245, 51, 63, 0.15);
+            border-radius: 15px;
             opacity: 0;
             visibility: hidden;
-            transform: translateY(-10px);
-            transition: all 0.3s ease;
-            border: 1px solid var(--light-grey);
+            transform: translateY(-15px) scale(0.95);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid var(--red-accent);
+            overflow: hidden;
         }
 
         .nav-item:hover .dropdown {
             opacity: 1;
             visibility: visible;
-            transform: translateY(0);
+            transform: translateY(0) scale(1);
         }
 
         .dropdown a {
             display: block;
-            padding: 0.75rem 1rem;
+            padding: 1rem 1.5rem;
             color: var(--total-black);
             text-decoration: none;
+            font-family: 'SIG Text', sans-serif;
+            font-weight: 500;
+            font-size: 0.95rem;
             transition: all 0.3s ease;
-            border-radius: 6px;
-            margin: 0.25rem;
+            border-bottom: 1px solid rgba(223, 222, 222, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dropdown a:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--red-accent), #ff6b6b);
+            transition: left 0.3s ease;
+            z-index: -1;
         }
 
         .dropdown a:hover {
-            background: var(--red-accent);
             color: var(--bright-white);
-            transform: translateX(5px);
+            transform: translateX(8px);
+        }
+
+        .dropdown a:hover::before {
+            left: 0;
         }
 
         /* Mobile Menu */
@@ -1318,6 +1353,25 @@
                 margin-top: 65px;
             }
 
+            body {
+                overflow-x: hidden;
+            }
+
+            .container {
+                padding: 0 1rem;
+                max-width: 100%;
+                overflow-x: hidden;
+            }
+
+            .hero-container {
+                padding: 0 1rem;
+                max-width: 100%;
+            }
+
+            .hero-content {
+                max-width: 100%;
+            }
+
             .hero-title {
                 font-size: 2.2rem;
             }
@@ -1331,10 +1385,6 @@
             }
 
             .nav-container {
-                padding: 0 1rem;
-            }
-
-            .container {
                 padding: 0 1rem;
             }
 
@@ -1365,7 +1415,15 @@
             }
 
             .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: 1fr;
+            }
+
+            .overview-content {
+                grid-template-columns: 1fr;
+            }
+
+            .synergy-grid {
+                grid-template-columns: 1fr;
             }
 
             .cta-buttons {
@@ -1464,6 +1522,7 @@
         <div class="top-nav-container">
             <ul class="top-nav-menu">
                 <li><a href="pengadaan.html" class="top-nav-link"><i class="fas fa-shopping-cart"></i> Pengadaan</a></li>
+                <li><a href="keberlanjutan.html" class="top-nav-link"><i class="fas fa-leaf"></i> Keberlanjutan</a></li>
                 <li><a href="karir.html" class="top-nav-link"><i class="fas fa-users"></i> Karir</a></li>
                 <li><a href="jaringan.html" class="top-nav-link"><i class="fas fa-network-wired"></i> Jaringan</a></li>
                 <li><a href="kontak.html" class="top-nav-link"><i class="fas fa-phone"></i> Kontak</a></li>
