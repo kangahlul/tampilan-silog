@@ -1530,7 +1530,21 @@
 
             .hero-content {
                 padding: 1rem 0;
-                margin-top: -4rem;
+                margin-top: calc(-2rem - env(safe-area-inset-top, 0px));
+            }
+
+            /* Untuk iPhone dengan layar lebih tinggi */
+            @media screen and (min-height: 900px) and (max-width: 768px) {
+                .hero-content {
+                    margin-top: -3rem;
+                }
+            }
+
+            /* Untuk iPhone dengan layar sangat tinggi seperti iPhone 16 */
+            @media screen and (min-height: 950px) and (max-width: 768px) {
+                .hero-content {
+                    margin-top: -1.5rem;
+                }
             }
 
             .hero-title {
